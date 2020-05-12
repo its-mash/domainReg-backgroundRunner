@@ -1,0 +1,32 @@
+
+
+2020-05-13 00:15:02.074854 : cron Job started
+2020-05-13 00:15:32.116100 : before queuing
+2020-05-13 00:15:32.116138 : after queuing 0  tasks
+2020-05-13 00:15:32.116147 : cron Job finished
+MySQL connection is closed
+
+
+2020-05-13 00:16:01.360779 : cron Job started
+2020-05-13 00:16:31.375400 : before queuing
+
+
+2020-05-13 00:16:31.375894 :  xxxasab.com  scheduled for  2020-05-13 00:17:02
+2020-05-13 00:16:31.381039 : after queuing 1  tasks
+2020-05-13 00:17:02.000001 : before requesting  xxxasab.com
+   0 xxxasab.com 200 {"success":true}
+   1 xxxasab.com 200 {"success":true}
+   2 xxxasab.com 200 {"success":true}
+   3 xxxasab.com 200 {"success":true}
+   4 xxxasab.com 200 {"success":true}
+2020-05-13 00:17:02.000001 : After receiving last response of  xxxasab.com
+2020-05-13 00:17:02.068792 Finished requesting  xxxasab.com
+2020-05-13 00:17:02.068916 : cron Job finished
+MySQL connection is closed
+
+
+2020-05-13 00:17:01.616462 : cron Job started
+2020-05-13 00:17:31.653983 : before queuing
+2020-05-13 00:17:31.654016 : after queuing 0  tasks
+2020-05-13 00:17:31.654026 : cron Job finished
+MySQL connection is closed

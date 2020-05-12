@@ -3,10 +3,13 @@ from mysql.connector import Error
 import datetime
 import threading
 import requests
-import  time
+import time
 import sys
+import os
 
-sys.stdout=open("domainReg.log","w")
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.stdout=open(ROOT_DIR+"/domainReg.log","a")
 
 API_ENDPOINT = "http://localhost:3000/resello"
 
