@@ -8,21 +8,29 @@ import sys
 import os
 
 
+#CONFIG
+API_ENDPOINT = "http://localhost:3000/resello"
+API_KEY = "XXXXXXXXXXXXXXXXX"
+LABEL = "MYLABEL"
+CUSTOMER_ID=45
+NUMBER_OF_REQUEST = 5
+GAP = 0.05
+SLEEP_TIME=30
+
+MYSQL_USER = 'root'
+MYSQL_PASS = 'bnm'
+MYSQL_DATABASE = 'resello-domain-reg'
+#END
+
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.stdout=open(ROOT_DIR+"/domainReg.log","a")
 
-API_ENDPOINT = "http://localhost:3000/resello"
-
-# your API key here
-API_KEY = "XXXXXXXXXXXXXXXXX"
-
-NUMBER_OF_REQUEST=5
-GAP=0.05
+log=""
 
 def RunTaskInThread(row, connection, cursor ):
     try:
         print("\n")
-        print(datetime.datetime.now(),": ",row[1]," scheduled for ",datetime.datetime.fromtimestamp(row[2]))
+        print(datetime.datetime.now(),": ",row[1]," scheduled for ",row[3])
         scheduled_time=row[2]
         while(datetime.datetime.now().timestamp() < scheduled_time):
             continue
@@ -34,11 +42,11 @@ def RunTaskInThread(row, connection, cursor ):
             res=requests.post(
                 API_ENDPOINT,
                 headers={
-                    "X-APIKEY": "keyy",
-                    "label": "myLabel"
+                    "X-APIKEY": API_KEY,
+                    "label": LABEL
                 },
                 json={
-                   "customer": 15,
+                   "customer": CUSTOMER_ID,
                    "type": "new",
                    "order": [
                       {
@@ -62,7 +70,7 @@ def RunTaskInThread(row, connection, cursor ):
 
         sql = "INSERT INTO completed_tasks (domain_name, scheduled_at,requested_at,received_at,response) VALUES (%s, %s, %s, %s, %s  )"
         response="success:"+str(success)
-        val = (row[1],datetime.datetime.fromtimestamp(row[2]),requested_at,received_at,response)
+        val = (row[1],row[3],requested_at,received_at,response)
         cursor.execute(sql, val)
 
         sql_Delete_query = """Delete from tasks where id = %s"""
@@ -79,30 +87,35 @@ def RunTaskInThread(row, connection, cursor ):
 
 
 try:
+
     print("\n")
     print(datetime.datetime.now(),": cron Job started")
 
-    time.sleep(30)
+    time.sleep(SLEEP_TIME)
 
     connection = mysql.connector.connect(host='localhost',
-                                         database='resello-domain-reg',
-                                         user='root',
-                                         password='bnm')
+                                         database=MYSQL_DATABASE,
+                                         user=MYSQL_USER,
+                                         password=MYSQL_PASS)
 
     sql_select_Query = "select * from tasks"
     cursor = connection.cursor()
     cursor.execute(sql_select_Query)
     records = cursor.fetchall()
+    if len(records) == 0:
+        print("Exiting, no task pending")
+        exit()
     threads=[]
 
     print(datetime.datetime.now(),": before queuing")
     taskCount=0
     for row in records:
-        if row[2] - datetime.datetime.now().timestamp() < 60:
-            x=threading.Thread(target=RunTaskInThread,args=(row,connection,cursor,))
-            threads.append(x)
-            x.start()
-            taskCount+=1
+        dif=row[2] - datetime.datetime.now().timestamp();
+        if 60 > dif >= 0:
+           x=threading.Thread(target=RunTaskInThread,args=(row,connection,cursor,))
+           threads.append(x)
+           x.start()
+           taskCount+=1
     print(datetime.datetime.now(),": after queuing", taskCount," tasks")
     for x in threads:
         x.join()
