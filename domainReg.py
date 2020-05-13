@@ -13,7 +13,7 @@ API_ENDPOINT = "http://localhost:3000/resello"
 API_KEY = "XXXXXXXXXXXXXXXXX"
 LABEL = "MYLABEL"
 CUSTOMER_ID=45
-NUMBER_OF_REQUEST = 5
+NUMBER_OF_REQUEST = 2
 GAP = 0.05
 SLEEP_TIME=30
 
@@ -22,8 +22,11 @@ MYSQL_PASS = 'bnm'
 MYSQL_DATABASE = 'resello-domain-reg'
 #END
 
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.stdout=open(ROOT_DIR+"/domainReg.log","a")
+# ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+# sys.stdout=open(ROOT_DIR+"/domainReg.log","a")
+
+os.environ['TZ'] = 'Asia/Kolkata'
+time.tzset()
 
 log=""
 
@@ -127,6 +130,6 @@ finally:
     if (connection.is_connected()):
         connection.close()
         cursor.close()
-        print("MySQL connection is closed")
+        # print("MySQL connection is closed")
 
 
