@@ -50,14 +50,8 @@ def RunTaskInThread(row, connection, cursor ):
                 },
                 json={
                    "customer": CUSTOMER_ID,
-                   "type": "new",
-                   "order": [
-                      {
-                         "type": "domain-register-order",
-                         "name": row[1],
-                         "interval": 12
-                      }
-                   ]
+                   "domain": row[1],
+                   "interval": 12
                 }
 
             )
@@ -131,5 +125,17 @@ finally:
         connection.close()
         cursor.close()
         # print("MySQL connection is closed")
+
+# json = {
+#     "customer": CUSTOMER_ID,
+#     "type": "new",
+#     "order": [
+#         {
+#             "type": "domain-register-order",
+#             "name": row[1],
+#             "interval": 12
+#         }
+#     ]
+# }
 
 
