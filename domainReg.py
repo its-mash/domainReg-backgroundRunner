@@ -22,8 +22,8 @@ MYSQL_PASS = 'bnm'
 MYSQL_DATABASE = 'resello-domain-reg'
 #END
 
-# ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-# sys.stdout=open(ROOT_DIR+"/domainReg.log","a")
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.stdout=open(ROOT_DIR+"/domainReg.log","a")
 
 os.environ['TZ'] = 'Asia/Kolkata'
 time.tzset()
