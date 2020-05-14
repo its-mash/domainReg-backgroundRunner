@@ -1,1 +1,499 @@
 
+
+
+2020-05-14 10:39:01.954929 : cron Job started
+2020-05-14 10:39:31.994565 : before queuing
+2020-05-14 10:39:31.994637 : after queuing 0  tasks
+2020-05-14 10:39:31.994650 : cron Job finished
+
+
+2020-05-14 10:40:01.292468 : cron Job started
+2020-05-14 10:40:31.332194 : before queuing
+2020-05-14 10:40:31.332284 : after queuing 0  tasks
+2020-05-14 10:40:31.332303 : cron Job finished
+
+
+2020-05-14 10:41:01.725159 : cron Job started
+2020-05-14 10:41:31.768237 : before queuing
+2020-05-14 10:41:31.768336 : after queuing 0  tasks
+2020-05-14 10:41:31.768354 : cron Job finished
+
+
+2020-05-14 10:42:02.171082 : cron Job started
+2020-05-14 10:42:32.212656 : before queuing
+
+
+2020-05-14 10:42:32.213198 :  texst.com  scheduled for  2020-05-14 10:43:26
+2020-05-14 10:42:32.218341 : after queuing 1  tasks
+2020-05-14 10:43:26.000003 : before requesting  texst.com
+   0 texst.com 200 {"success":true}
+   1 texst.com 200 {"success":true}
+2020-05-14 10:43:26.000003 : After receiving last response of  texst.com
+2020-05-14 10:43:26.198074 Finished requesting  texst.com
+2020-05-14 10:43:26.198220 : cron Job finished
+
+
+2020-05-14 10:43:01.681434 : cron Job started
+2020-05-14 10:43:31.736319 : before queuing
+2020-05-14 10:43:31.736403 : after queuing 0  tasks
+2020-05-14 10:43:31.736419 : cron Job finished
+
+
+2020-05-14 10:44:02.479604 : cron Job started
+2020-05-14 10:44:32.516139 : before queuing
+2020-05-14 10:44:32.516218 : after queuing 0  tasks
+2020-05-14 10:44:32.516236 : cron Job finished
+
+
+2020-05-14 10:45:01.918440 : cron Job started
+2020-05-14 10:45:31.958308 : before queuing
+2020-05-14 10:45:31.958447 : after queuing 0  tasks
+2020-05-14 10:45:31.958480 : cron Job finished
+
+
+2020-05-14 10:46:02.256209 : cron Job started
+2020-05-14 10:46:32.293943 : before queuing
+2020-05-14 10:46:32.293997 : after queuing 0  tasks
+2020-05-14 10:46:32.294006 : cron Job finished
+
+
+2020-05-14 10:47:01.655470 : cron Job started
+2020-05-14 10:47:31.692772 : before queuing
+2020-05-14 10:47:31.692848 : after queuing 0  tasks
+2020-05-14 10:47:31.692867 : cron Job finished
+
+
+2020-05-14 10:48:02.028402 : cron Job started
+2020-05-14 10:48:32.072711 : before queuing
+2020-05-14 10:48:32.072808 : after queuing 0  tasks
+2020-05-14 10:48:32.072827 : cron Job finished
+
+
+2020-05-14 10:49:01.357683 : cron Job started
+2020-05-14 10:49:31.399309 : before queuing
+2020-05-14 10:49:31.399409 : after queuing 0  tasks
+2020-05-14 10:49:31.399428 : cron Job finished
+
+
+2020-05-14 10:50:01.790109 : cron Job started
+2020-05-14 10:50:31.833138 : before queuing
+2020-05-14 10:50:31.833211 : after queuing 0  tasks
+2020-05-14 10:50:31.833224 : cron Job finished
+
+
+2020-05-14 10:51:02.201308 : cron Job started
+2020-05-14 10:51:32.240267 : before queuing
+2020-05-14 10:51:32.240353 : after queuing 0  tasks
+2020-05-14 10:51:32.240369 : cron Job finished
+
+
+2020-05-14 10:52:01.712046 : cron Job started
+2020-05-14 10:52:31.755007 : before queuing
+2020-05-14 10:52:31.755083 : after queuing 0  tasks
+2020-05-14 10:52:31.755100 : cron Job finished
+
+
+2020-05-14 10:53:02.015783 : cron Job started
+2020-05-14 10:53:32.060636 : before queuing
+2020-05-14 10:53:32.060699 : after queuing 0  tasks
+2020-05-14 10:53:32.060711 : cron Job finished
+
+
+2020-05-14 10:54:01.318840 : cron Job started
+2020-05-14 10:54:31.342242 : before queuing
+2020-05-14 10:54:31.342312 : after queuing 0  tasks
+2020-05-14 10:54:31.342324 : cron Job finished
+
+
+2020-05-14 10:55:01.668120 : cron Job started
+2020-05-14 10:55:31.704353 : before queuing
+2020-05-14 10:55:31.704401 : after queuing 0  tasks
+2020-05-14 10:55:31.704410 : cron Job finished
+
+
+2020-05-14 10:56:01.993873 : cron Job started
+Error reading data from MySQL table 2003 (HY000): Can't connect to MySQL server on 'localhost' (111)
+
+
+2020-05-14 12:58:31.421675 : cron Job started
+2020-05-14 12:59:04.114576 : before queuing
+2020-05-14 12:59:04.114679 : after queuing 0  tasks
+2020-05-14 12:59:04.114697 : cron Job finished
+
+
+2020-05-14 12:59:01.587333 : cron Job started
+2020-05-14 12:59:31.626497 : before queuing
+2020-05-14 12:59:31.626552 : after queuing 0  tasks
+2020-05-14 12:59:31.626562 : cron Job finished
+
+
+2020-05-14 13:00:01.857015 : cron Job started
+2020-05-14 13:00:31.893386 : before queuing
+2020-05-14 13:00:31.893484 : after queuing 0  tasks
+2020-05-14 13:00:31.893498 : cron Job finished
+
+
+2020-05-14 11:01:02.472544 : cron Job started
+2020-05-14 11:01:32.512328 : before queuing
+2020-05-14 11:01:32.512408 : after queuing 0  tasks
+2020-05-14 11:01:32.512424 : cron Job finished
+
+
+2020-05-14 11:02:01.753953 : cron Job started
+2020-05-14 11:02:31.790413 : before queuing
+2020-05-14 11:02:31.790497 : after queuing 0  tasks
+2020-05-14 11:02:31.790515 : cron Job finished
+
+
+2020-05-14 11:03:02.129290 : cron Job started
+2020-05-14 11:03:32.166652 : before queuing
+2020-05-14 11:03:32.166706 : after queuing 0  tasks
+2020-05-14 11:03:32.166716 : cron Job finished
+
+
+2020-05-14 11:04:01.426897 : cron Job started
+2020-05-14 11:04:31.469582 : before queuing
+2020-05-14 11:04:31.469679 : after queuing 0  tasks
+2020-05-14 11:04:31.469698 : cron Job finished
+
+
+2020-05-14 11:05:01.722724 : cron Job started
+2020-05-14 11:05:31.760346 : before queuing
+2020-05-14 11:05:31.760400 : after queuing 0  tasks
+2020-05-14 11:05:31.760409 : cron Job finished
+
+
+2020-05-14 11:06:01.997552 : cron Job started
+2020-05-14 11:06:32.038167 : before queuing
+2020-05-14 11:06:32.038260 : after queuing 0  tasks
+2020-05-14 11:06:32.038277 : cron Job finished
+
+
+2020-05-14 11:07:01.284692 : cron Job started
+2020-05-14 11:07:31.308719 : before queuing
+2020-05-14 11:07:31.308789 : after queuing 0  tasks
+2020-05-14 11:07:31.308801 : cron Job finished
+
+
+2020-05-14 11:08:01.575414 : cron Job started
+2020-05-14 11:08:31.617184 : before queuing
+2020-05-14 11:08:31.617268 : after queuing 0  tasks
+2020-05-14 11:08:31.617283 : cron Job finished
+
+
+2020-05-14 11:09:01.953521 : cron Job started
+2020-05-14 11:09:31.992927 : before queuing
+2020-05-14 11:09:31.993021 : after queuing 0  tasks
+2020-05-14 11:09:31.993038 : cron Job finished
+
+
+2020-05-14 11:10:01.230983 : cron Job started
+2020-05-14 11:10:31.273101 : before queuing
+2020-05-14 11:10:31.273198 : after queuing 0  tasks
+2020-05-14 11:10:31.273216 : cron Job finished
+
+
+2020-05-14 11:11:01.512233 : cron Job started
+2020-05-14 11:11:31.552667 : before queuing
+2020-05-14 11:11:31.552758 : after queuing 0  tasks
+2020-05-14 11:11:31.552775 : cron Job finished
+
+
+2020-05-14 11:12:01.865180 : cron Job started
+2020-05-14 11:12:31.904992 : before queuing
+2020-05-14 11:12:31.905088 : after queuing 0  tasks
+2020-05-14 11:12:31.905107 : cron Job finished
+
+
+2020-05-14 11:13:02.142290 : cron Job started
+2020-05-14 11:13:32.175832 : before queuing
+2020-05-14 11:13:32.175910 : after queuing 0  tasks
+2020-05-14 11:13:32.175923 : cron Job finished
+
+
+2020-05-14 11:14:01.503890 : cron Job started
+2020-05-14 11:14:31.544394 : before queuing
+2020-05-14 11:14:31.544512 : after queuing 0  tasks
+2020-05-14 11:14:31.544532 : cron Job finished
+
+
+2020-05-14 11:15:01.808146 : cron Job started
+2020-05-14 11:15:31.850703 : before queuing
+2020-05-14 11:15:31.850839 : after queuing 0  tasks
+2020-05-14 11:15:31.850857 : cron Job finished
+
+
+2020-05-14 11:16:02.098755 : cron Job started
+2020-05-14 11:16:32.141068 : before queuing
+2020-05-14 11:16:32.141141 : after queuing 0  tasks
+2020-05-14 11:16:32.141155 : cron Job finished
+
+
+2020-05-14 11:17:01.375376 : cron Job started
+2020-05-14 11:17:31.418371 : before queuing
+2020-05-14 11:17:31.418464 : after queuing 0  tasks
+2020-05-14 11:17:31.418481 : cron Job finished
+
+
+2020-05-14 11:18:01.678045 : cron Job started
+2020-05-14 11:18:31.714042 : before queuing
+2020-05-14 11:18:31.714116 : after queuing 0  tasks
+2020-05-14 11:18:31.714132 : cron Job finished
+
+
+2020-05-14 11:19:01.954508 : cron Job started
+2020-05-14 11:19:31.990986 : before queuing
+2020-05-14 11:19:31.991036 : after queuing 0  tasks
+2020-05-14 11:19:31.991044 : cron Job finished
+
+
+2020-05-14 11:20:01.238173 : cron Job started
+2020-05-14 11:20:31.280994 : before queuing
+2020-05-14 11:20:31.281087 : after queuing 0  tasks
+2020-05-14 11:20:31.281104 : cron Job finished
+
+
+2020-05-14 11:21:01.540652 : cron Job started
+2020-05-14 11:21:31.583810 : before queuing
+2020-05-14 11:21:31.583876 : after queuing 0  tasks
+2020-05-14 11:21:31.583887 : cron Job finished
+
+
+2020-05-14 11:22:01.880694 : cron Job started
+2020-05-14 11:22:31.923186 : before queuing
+2020-05-14 11:22:31.923279 : after queuing 0  tasks
+2020-05-14 11:22:31.923296 : cron Job finished
+
+
+2020-05-14 11:23:02.186737 : cron Job started
+2020-05-14 11:23:32.223560 : before queuing
+2020-05-14 11:23:32.223651 : after queuing 0  tasks
+2020-05-14 11:23:32.223669 : cron Job finished
+
+
+2020-05-14 11:24:01.459640 : cron Job started
+2020-05-14 11:24:31.491677 : before queuing
+2020-05-14 11:24:31.491747 : after queuing 0  tasks
+2020-05-14 11:24:31.491760 : cron Job finished
+
+
+2020-05-14 11:25:01.742220 : cron Job started
+2020-05-14 11:25:31.781216 : before queuing
+2020-05-14 11:25:31.781288 : after queuing 0  tasks
+2020-05-14 11:25:31.781301 : cron Job finished
+
+
+2020-05-14 11:26:02.020992 : cron Job started
+2020-05-14 11:26:32.064324 : before queuing
+2020-05-14 11:26:32.064398 : after queuing 0  tasks
+2020-05-14 11:26:32.064411 : cron Job finished
+
+
+2020-05-14 11:27:01.401727 : cron Job started
+2020-05-14 11:27:31.441389 : before queuing
+2020-05-14 11:27:31.441479 : after queuing 0  tasks
+2020-05-14 11:27:31.441496 : cron Job finished
+
+
+2020-05-14 11:28:01.706892 : cron Job started
+2020-05-14 11:28:31.745556 : before queuing
+2020-05-14 11:28:31.745632 : after queuing 0  tasks
+2020-05-14 11:28:31.745647 : cron Job finished
+
+
+2020-05-14 11:29:01.997291 : cron Job started
+2020-05-14 11:29:32.037991 : before queuing
+2020-05-14 11:29:32.038086 : after queuing 0  tasks
+2020-05-14 11:29:32.038103 : cron Job finished
+
+
+2020-05-14 11:30:01.375787 : cron Job started
+2020-05-14 11:30:31.396797 : before queuing
+2020-05-14 11:30:31.396892 : after queuing 0  tasks
+2020-05-14 11:30:31.396910 : cron Job finished
+
+
+2020-05-14 11:31:01.637072 : cron Job started
+2020-05-14 11:31:31.678434 : before queuing
+2020-05-14 11:31:31.678531 : after queuing 0  tasks
+2020-05-14 11:31:31.678552 : cron Job finished
+
+
+2020-05-14 11:32:01.947541 : cron Job started
+2020-05-14 11:32:31.990977 : before queuing
+2020-05-14 11:32:31.991068 : after queuing 0  tasks
+2020-05-14 11:32:31.991085 : cron Job finished
+
+
+2020-05-14 11:33:01.320926 : cron Job started
+2020-05-14 11:33:31.364740 : before queuing
+2020-05-14 11:33:31.364835 : after queuing 0  tasks
+2020-05-14 11:33:31.364852 : cron Job finished
+
+
+2020-05-14 11:34:01.623712 : cron Job started
+2020-05-14 11:34:31.663049 : before queuing
+2020-05-14 11:34:31.663102 : after queuing 0  tasks
+2020-05-14 11:34:31.663111 : cron Job finished
+
+
+2020-05-14 11:35:01.905709 : cron Job started
+2020-05-14 11:35:31.927582 : before queuing
+2020-05-14 11:35:31.927648 : after queuing 0  tasks
+2020-05-14 11:35:31.927660 : cron Job finished
+
+
+2020-05-14 11:36:02.172760 : cron Job started
+2020-05-14 11:36:32.190947 : before queuing
+2020-05-14 11:36:32.191075 : after queuing 0  tasks
+2020-05-14 11:36:32.191106 : cron Job finished
+
+
+2020-05-14 11:37:01.435059 : cron Job started
+2020-05-14 11:37:31.478445 : before queuing
+2020-05-14 11:37:31.478514 : after queuing 0  tasks
+2020-05-14 11:37:31.478527 : cron Job finished
+
+
+2020-05-14 11:38:01.743527 : cron Job started
+2020-05-14 11:38:31.783711 : before queuing
+2020-05-14 11:38:31.783781 : after queuing 0  tasks
+2020-05-14 11:38:31.783795 : cron Job finished
+
+
+2020-05-14 11:39:02.020567 : cron Job started
+2020-05-14 11:39:32.064676 : before queuing
+2020-05-14 11:39:32.064769 : after queuing 0  tasks
+2020-05-14 11:39:32.064786 : cron Job finished
+
+
+2020-05-14 11:40:01.322455 : cron Job started
+2020-05-14 11:40:31.364261 : before queuing
+2020-05-14 11:40:31.364330 : after queuing 0  tasks
+2020-05-14 11:40:31.364343 : cron Job finished
+
+
+2020-05-14 11:41:01.670311 : cron Job started
+2020-05-14 11:41:31.698158 : before queuing
+2020-05-14 11:41:31.698234 : after queuing 0  tasks
+2020-05-14 11:41:31.698249 : cron Job finished
+
+
+2020-05-14 11:42:01.942256 : cron Job started
+2020-05-14 11:42:31.985298 : before queuing
+2020-05-14 11:42:31.985382 : after queuing 0  tasks
+2020-05-14 11:42:31.985398 : cron Job finished
+
+
+2020-05-14 11:43:01.229829 : cron Job started
+2020-05-14 11:43:31.268994 : before queuing
+2020-05-14 11:43:31.269086 : after queuing 0  tasks
+2020-05-14 11:43:31.269103 : cron Job finished
+
+
+2020-05-14 11:44:01.501092 : cron Job started
+2020-05-14 11:44:31.521430 : before queuing
+2020-05-14 11:44:31.521521 : after queuing 0  tasks
+2020-05-14 11:44:31.521538 : cron Job finished
+
+
+2020-05-14 11:45:01.822025 : cron Job started
+2020-05-14 11:45:31.859310 : before queuing
+2020-05-14 11:45:31.859366 : after queuing 0  tasks
+2020-05-14 11:45:31.859376 : cron Job finished
+
+
+2020-05-14 11:46:02.107895 : cron Job started
+2020-05-14 11:46:32.128553 : before queuing
+2020-05-14 11:46:32.128620 : after queuing 0  tasks
+2020-05-14 11:46:32.128633 : cron Job finished
+
+
+2020-05-14 11:47:01.461645 : cron Job started
+2020-05-14 11:47:31.652324 : before queuing
+2020-05-14 11:47:31.652422 : after queuing 0  tasks
+2020-05-14 11:47:31.652446 : cron Job finished
+
+
+2020-05-14 11:48:04.933997 : cron Job started
+2020-05-14 11:48:34.977860 : before queuing
+2020-05-14 11:48:34.977935 : after queuing 0  tasks
+2020-05-14 11:48:34.977951 : cron Job finished
+
+
+2020-05-14 11:49:01.223221 : cron Job started
+2020-05-14 11:49:31.265120 : before queuing
+2020-05-14 11:49:31.265209 : after queuing 0  tasks
+2020-05-14 11:49:31.265228 : cron Job finished
+
+
+2020-05-14 11:50:01.509065 : cron Job started
+2020-05-14 11:50:31.547712 : before queuing
+2020-05-14 11:50:31.547770 : after queuing 0  tasks
+2020-05-14 11:50:31.547780 : cron Job finished
+
+
+2020-05-14 11:51:01.790555 : cron Job started
+2020-05-14 11:51:31.834876 : before queuing
+2020-05-14 11:51:31.834947 : after queuing 0  tasks
+2020-05-14 11:51:31.834966 : cron Job finished
+
+
+2020-05-14 11:52:02.176990 : cron Job started
+2020-05-14 11:52:32.208623 : before queuing
+2020-05-14 11:52:32.208718 : after queuing 0  tasks
+2020-05-14 11:52:32.208736 : cron Job finished
+
+
+2020-05-14 11:53:01.609065 : cron Job started
+2020-05-14 11:53:31.648290 : before queuing
+2020-05-14 11:53:31.648410 : after queuing 0  tasks
+2020-05-14 11:53:31.648435 : cron Job finished
+
+
+2020-05-14 11:54:01.933336 : cron Job started
+2020-05-14 11:54:31.967287 : before queuing
+2020-05-14 11:54:31.967340 : after queuing 0  tasks
+2020-05-14 11:54:31.967350 : cron Job finished
+
+
+2020-05-14 11:55:02.252464 : cron Job started
+2020-05-14 11:55:32.284740 : before queuing
+2020-05-14 11:55:32.284836 : after queuing 0  tasks
+2020-05-14 11:55:32.284855 : cron Job finished
+
+
+2020-05-14 11:56:01.534651 : cron Job started
+2020-05-14 11:56:31.573736 : before queuing
+2020-05-14 11:56:31.573813 : after queuing 0  tasks
+2020-05-14 11:56:31.573829 : cron Job finished
+
+
+2020-05-14 11:57:01.986310 : cron Job started
+2020-05-14 11:57:32.020821 : before queuing
+2020-05-14 11:57:32.020914 : after queuing 0  tasks
+2020-05-14 11:57:32.020930 : cron Job finished
+
+
+2020-05-14 11:58:01.259670 : cron Job started
+2020-05-14 11:58:31.300614 : before queuing
+2020-05-14 11:58:31.300689 : after queuing 0  tasks
+2020-05-14 11:58:31.300704 : cron Job finished
+
+
+2020-05-14 11:59:01.547366 : cron Job started
+2020-05-14 11:59:31.586166 : before queuing
+2020-05-14 11:59:31.586242 : after queuing 0  tasks
+2020-05-14 11:59:31.586260 : cron Job finished
+
+
+2020-05-14 12:00:01.932405 : cron Job started
+2020-05-14 12:00:31.974820 : before queuing
+2020-05-14 12:00:31.974911 : after queuing 0  tasks
+2020-05-14 12:00:31.974928 : cron Job finished
+
+
+2020-05-14 12:01:02.230263 : cron Job started
+2020-05-14 12:01:32.269775 : before queuing
+2020-05-14 12:01:32.269849 : after queuing 0  tasks
+2020-05-14 12:01:32.269864 : cron Job finished
