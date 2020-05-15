@@ -68,7 +68,7 @@ def RunTaskInThread(row, connection, cursor):
             stop_time = row[4]
             cThreads = []
             i = 1
-            gap=1000/row[6]
+            gap=row[6]/100
             print("gap ",gap)
             while True:
                 future = executor.submit(sendRequest, i,row)
