@@ -15,7 +15,7 @@ API_KEY = "XXXXXXXXXXXXXXXXX"
 LABEL = "MYLABEL"
 CUSTOMER_ID = 45
 NUMBER_OF_REQUEST = 2
-GAP = 0.003
+GAP = 0.1
 SLEEP_TIME = 20
 
 MYSQL_USER = 'root'
@@ -23,8 +23,8 @@ MYSQL_PASS = 'bnm'
 MYSQL_DATABASE = 'resello-domain-reg'
 # END
 
-# ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-# sys.stdout = open(ROOT_DIR + "/domainReg.log", "a")
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.stdout = open(ROOT_DIR + "/domainReg.log", "a")
 
 os.environ['TZ'] = 'Asia/Kolkata'
 time.tzset()
@@ -68,24 +68,26 @@ def RunTaskInThread(row, connection, cursor):
             stop_time = row[4]
             cThreads = []
             i = 1
+            gap=1000/row[6]
+            print("gap ",gap)
             while True:
                 future = executor.submit(sendRequest, i,row)
                 cThreads.append(future)
                 i = i + 1
                 # print(datetime.datetime.now().timestamp()," -->",stop_time)
-                time.sleep(GAP)
+                time.sleep(gap)
                 if datetime.datetime.now().timestamp() > stop_time:
                     break
             print(i,'for',row[1])
             for ct in cThreads:
                 success= success or ct.result()
 
-        # received_at=datetime.datetime.now()
+        received_at=datetime.datetime.now()
         # print(requested_at,": After receiving last response of ",row[1])
 
-        sql = "INSERT INTO completed_tasks (domain_name,begin_time,end_time,req_count,response) VALUES (%s, %s, %s, %s, %s  )"
+        sql = "INSERT INTO completed_tasks (domain_name,begin_time,end_time,req_count,last_response,response) VALUES (%s, %s, %s, %s, %s, %s  )"
         response = "success:" + str(success)
-        val = (row[1], row[3], row[5], i, response)
+        val = (row[1], row[3], row[5], i, received_at,response)
         cursor.execute(sql, val)
         connection.commit()
 
