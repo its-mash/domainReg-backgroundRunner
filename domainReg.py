@@ -6,6 +6,8 @@ import requests
 import time
 import sys
 import os
+import concurrent.futures
+
 
 # CONFIG
 API_ENDPOINT = "http://domain-reg.test/resello"
@@ -13,7 +15,7 @@ API_KEY = "XXXXXXXXXXXXXXXXX"
 LABEL = "MYLABEL"
 CUSTOMER_ID = 45
 NUMBER_OF_REQUEST = 2
-GAP = 0.05
+GAP = 0.003
 SLEEP_TIME = 20
 
 MYSQL_USER = 'root'
@@ -21,13 +23,32 @@ MYSQL_PASS = 'bnm'
 MYSQL_DATABASE = 'resello-domain-reg'
 # END
 
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.stdout = open(ROOT_DIR + "/domainReg.log", "a")
+# ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+# sys.stdout = open(ROOT_DIR + "/domainReg.log", "a")
 
 os.environ['TZ'] = 'Asia/Kolkata'
 time.tzset()
 
 log = ""
+
+def sendRequest(i,row):
+    res = requests.post(
+        API_ENDPOINT,
+        headers={
+            "X-APIKEY": API_KEY,
+            "label": LABEL
+        },
+        json={
+            "customer": CUSTOMER_ID,
+            "domain": row[1],
+            "interval": 12
+        }
+
+    )
+    # print("  ", i, row[1], res.status_code, res.text)
+    rjson = res.json()
+
+    return rjson['success']
 
 
 def RunTaskInThread(row, connection, cursor):
@@ -35,37 +56,29 @@ def RunTaskInThread(row, connection, cursor):
         print()
         print(datetime.datetime.now(), ": ", row[1], " scheduled for ", row[3])
         scheduled_time = row[2]
-        stop_time = row[4]
         # if datetime.datetime.now().timestamp()> scheduled_time:
         #     return
         while (datetime.datetime.now().timestamp() < scheduled_time):
             continue
-        # requested_at=datetime.datetime.now()
-        # print(requested_at,": before requesting ",row[1])
+        requested_at=datetime.datetime.now()
+        print(requested_at,": before requesting ",row[1])
 
-        success = False
-        i = 1
-        while True:
-            res = requests.post(
-                API_ENDPOINT,
-                headers={
-                    "X-APIKEY": API_KEY,
-                    "label": LABEL
-                },
-                json={
-                    "customer": CUSTOMER_ID,
-                    "domain": row[1],
-                    "interval": 12
-                }
-
-            )
-            print("  ", i, row[1], res.status_code, res.text)
-            rjson = res.json()
-
-            success = success or rjson['success']
-            i = i + 1
-            if datetime.datetime.now().timestamp() > stop_time:
-                break
+        success=False
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            stop_time = row[4]
+            cThreads = []
+            i = 1
+            while True:
+                future = executor.submit(sendRequest, i,row)
+                cThreads.append(future)
+                i = i + 1
+                # print(datetime.datetime.now().timestamp()," -->",stop_time)
+                time.sleep(GAP)
+                if datetime.datetime.now().timestamp() > stop_time:
+                    break
+            print(i,'for',row[1])
+            for ct in cThreads:
+                success= success or ct.result()
 
         # received_at=datetime.datetime.now()
         # print(requested_at,": After receiving last response of ",row[1])
