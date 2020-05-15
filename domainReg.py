@@ -107,6 +107,9 @@ try:
                                          database=MYSQL_DATABASE,
                                          user=MYSQL_USER,
                                          password=MYSQL_PASS)
+    connection.query('SET GLOBAL connect_timeout=28800')
+    connection.query('SET GLOBAL wait_timeout=28800')
+    connection.query('SET GLOBAL interactive_timeout=28800')
 
     sql_select_Query = "select * from tasks"
     cursor = connection.cursor()
