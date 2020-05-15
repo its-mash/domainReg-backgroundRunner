@@ -113,10 +113,12 @@ try:
     cursor.execute('SET GLOBAL connect_timeout=28800')
     cursor.execute('SET GLOBAL wait_timeout=28800')
     cursor.execute('SET GLOBAL interactive_timeout=28800')
+    # cursor.fetchall()
 
     sql_select_Query = "select * from tasks"
     cursor.execute(sql_select_Query)
     records = cursor.fetchall()
+    # print(records)
     if len(records) == 0:
         print("Exiting, no task pending")
         exit()
