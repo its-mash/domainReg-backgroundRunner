@@ -7,13 +7,65 @@ import time
 import sys
 import os
 import concurrent.futures
-
+import xml.etree.ElementTree as ET
 
 # CONFIG
-API_ENDPOINT = "http://domain-reg.test/domainreg/resello"
-API_KEY = "XXXXXXXXXXXXXXXXX"
-LABEL = "MYLABEL"
-CUSTOMER_ID = 45
+API_KEY = "ApiKey=0a485bb25ad44cfe835a59b6054f4a9b"
+API_USER = "ApiUser=stdln"
+UserName="UserName=stdln"
+ClientIp="ClientIp=103.199.84.138"
+Years = "Years=1"
+
+API_ENDPOINT = "https://api.sandbox.namecheap.com/xml.response?" \
+               + API_USER + "&" \
+               + API_KEY + "&" \
+               + UserName+"&" \
+               "Command=namecheap.domains.create&" \
+               + ClientIp+"&" \
+               +Years+"&" \
+               "AuxBillingFirstName=John&" \
+                "AuxBillingLastName=Smith&" \
+                "AuxBillingAddress1=8939%20S.cross%20Blv&" \
+                "AuxBillingStateProvince=CA&" \
+                "AuxBillingPostalCode=90045&" \
+                "AuxBillingCountry=US&" \
+                "AuxBillingPhone=+1.6613102107&" \
+                "AuxBillingEmailAddress=john@gmail.com&" \
+                "AuxBillingOrganizationName=NC&" \
+                "AuxBillingCity=CA&" \
+                "TechFirstName=John&" \
+                "TechLastName=Smith&" \
+                "TechAddress1=8939%20S.cross%20Blvd&" \
+                "TechStateProvince=CA&" \
+                "TechPostalCode=90045&" \
+                "TechCountry=US&" \
+                "TechPhone=+1.6613102107&" \
+                "TechEmailAddress=john@gmail.com&" \
+                "TechOrganizationName=NC&" \
+                "TechCity=CA&" \
+                "AdminFirstName=John&" \
+                "AdminLastName=Smith&" \
+                "AdminAddress1=8939%cross%20Blvd&" \
+                "AdminStateProvince=CA&" \
+                "AdminPostalCode=9004&" \
+                "AdminCountry=US&" \
+                "AdminPhone=+1.6613102107&" \
+                "AdminEmailAddress=joe@gmail.com&" \
+                "AdminOrganizationName=NC&" \
+                "AdminCity=CA&" \
+                "RegistrantFirstName=John&" \
+                "RegistrantLastName=Smith&" \
+                "RegistrantAddress1=8939%20S.cross%20Blvd&" \
+                "RegistrantStateProvince=CS&" \
+                "RegistrantPostalCode=90045&" \
+                "RegistrantCountry=US&" \
+                "RegistrantPhone=+1.6613102107&" \
+                "RegistrantEmailAddress=jo@gmail.com&" \
+                "RegistrantOrganizationName=NC&" \
+                "RegistrantCity=CA&" \
+                "GenerateAdminOrderRefId=False"
+
+
 NUMBER_OF_REQUEST = 2
 GAP = 0.1
 SLEEP_TIME = 20
@@ -32,24 +84,15 @@ time.tzset()
 log = ""
 
 
-def sendRequest(i,row):
+def sendRequest(i, row):
     res = requests.post(
-        API_ENDPOINT,
-        headers={
-            "X-APIKEY": API_KEY,
-            "label": LABEL
-        },
-        json={
-            "customer": CUSTOMER_ID,
-            "domain": row[1],
-            "interval": 12
-        }
-
+        API_ENDPOINT + "&DomainName=" + row[1],
     )
-    # print("  ", i, row[1], res.status_code, res.text)
-    rjson = res.json()
+    root = ET.fromstring(res.content)
+    # ET.dump(root)
+    node=root.find(".//{http://api.namecheap.com/xml.response}DomainCreateResult")
 
-    return rjson['success']
+    return node.get("Registered")
 
 
 def RunTaskInThread(row, connection, cursor):
@@ -61,37 +104,37 @@ def RunTaskInThread(row, connection, cursor):
         #     return
         while (datetime.datetime.now().timestamp() < scheduled_time):
             continue
-        requested_at=datetime.datetime.now()
-        print(requested_at,": before requesting ",row[1])
+        requested_at = datetime.datetime.now()
+        print(requested_at, ": before requesting ", row[1])
 
-        success=False
+        success = False
         i = 0
         with concurrent.futures.ThreadPoolExecutor() as executor:
             stop_time = row[4]
             cThreads = []
-            gap=row[6]/100
-            print("gap ",gap)
+            gap = row[6] / 100
+            print("gap ", gap)
             while True:
-                future = executor.submit(sendRequest, i,row)
+                future = executor.submit(sendRequest, i, row)
                 cThreads.append(future)
-                i= i + 1
+                i = i + 1
                 # print(datetime.datetime.now().timestamp()," -->",stop_time)
                 time.sleep(gap)
                 if datetime.datetime.now().timestamp() > stop_time:
                     break
             for ct in cThreads:
                 if not success:
-                    success= success or ct.result()
+                    success = success or ct.result()
                 else:
                     i = i - int(ct.cancel())
 
         print(i, 'for', row[1])
-        received_at=datetime.datetime.now()
+        received_at = datetime.datetime.now()
         # print(requested_at,": After receiving last response of ",row[1])
 
-        sql = "INSERT INTO completed_tasks (domain_name,begin_time,end_time,req_count,last_response,response,api) VALUES (%s, %s, %s, %s, %s, %s, %s )"
+        sql = "INSERT INTO completed_tasks (domain_name,begin_time,end_time,req_count,last_response,response,api) VALUES (%s, %s, %s, %s, %s, %s, %s  )"
         response = "success:" + str(success)
-        val = (row[1], row[3], row[5], i, received_at,response,row[7])
+        val = (row[1], row[3], row[5], i, received_at, response, row[7])
         cursor.execute(sql, val)
         connection.commit()
 
@@ -119,7 +162,7 @@ try:
     cursor.execute('SET GLOBAL interactive_timeout=28800')
     # cursor.fetchall()
 
-    sql_select_Query = "select * from tasks where api='resello'"
+    sql_select_Query = "select * from tasks where api='namecheap'"
     cursor.execute(sql_select_Query)
     records = cursor.fetchall()
     # print(records)
