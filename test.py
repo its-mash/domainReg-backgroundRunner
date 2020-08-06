@@ -16,64 +16,101 @@ UserName = "UserName=stdln"
 ClientIp = "ClientIp=103.199.84.138"
 Years = "Years=1"
 
-API_ENDPOINT = "https://api.sandbox.namecheap.com/xml.response?" \
-               + API_USER + "&" \
-               + API_KEY + "&" \
-               + UserName + "&" \
-                            "Command=namecheap.domains.create&" \
-               + ClientIp + "&" \
-               + Years + "&" \
-                         "AuxBillingFirstName=John&" \
-                         "AuxBillingLastName=Smith&" \
-                         "AuxBillingAddress1=8939%20S.cross%20Blv&" \
-                         "AuxBillingStateProvince=CA&" \
-                         "AuxBillingPostalCode=90045&" \
-                         "AuxBillingCountry=US&" \
-                         "AuxBillingPhone=+1.6613102107&" \
-                         "AuxBillingEmailAddress=john@gmail.com&" \
-                         "AuxBillingOrganizationName=NC&" \
-                         "AuxBillingCity=CA&" \
-                         "TechFirstName=John&" \
-                         "TechLastName=Smith&" \
-                         "TechAddress1=8939%20S.cross%20Blvd&" \
-                         "TechStateProvince=CA&" \
-                         "TechPostalCode=90045&" \
-                         "TechCountry=US&" \
-                         "TechPhone=+1.6613102107&" \
-                         "TechEmailAddress=john@gmail.com&" \
-                         "TechOrganizationName=NC&" \
-                         "TechCity=CA&" \
-                         "AdminFirstName=John&" \
-                         "AdminLastName=Smith&" \
-                         "AdminAddress1=8939%cross%20Blvd&" \
-                         "AdminStateProvince=CA&" \
-                         "AdminPostalCode=9004&" \
-                         "AdminCountry=US&" \
-                         "AdminPhone=+1.6613102107&" \
-                         "AdminEmailAddress=joe@gmail.com&" \
-                         "AdminOrganizationName=NC&" \
-                         "AdminCity=CA&" \
-                         "RegistrantFirstName=John&" \
-                         "RegistrantLastName=Smith&" \
-                         "RegistrantAddress1=8939%20S.cross%20Blvd&" \
-                         "RegistrantStateProvince=CS&" \
-                         "RegistrantPostalCode=90045&" \
-                         "RegistrantCountry=US&" \
-                         "RegistrantPhone=+1.6613102107&" \
-                         "RegistrantEmailAddress=jo@gmail.com&" \
-                         "RegistrantOrganizationName=NC&" \
-                         "RegistrantCity=CA&" \
-                         "GenerateAdminOrderRefId=False"
+API_ENDPOINT = "https://soap-test.secureapi.com.au/API-2.0.wsdl"
 
 
-def sendRequest(i, row):
-    res = requests.post(
-        API_ENDPOINT + "&DomainName=" + row,
+s=requests.session()
+
+def getRegistrantID():
+    res = s.post(
+        API_ENDPOINT,
+        headers={
+            'content-type': 'application/soap+xml'
+        },
+        data="""<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="http://soap-test.secureapi.com.au/API-2.0">
+	<env:Header>
+		<ns1:Authenticate> 
+			<AuthenticateRequest>
+				<ResellerID>23172</ResellerID>
+				<APIKey>e165aee9aa5765c36273ee5efb61c584</APIKey> 
+			</AuthenticateRequest>
+		</ns1:Authenticate> 
+	</env:Header> 
+	<env:Body>
+		<ns1:ContactCloneToRegistrant> 
+			<ContactCloneToRegistrantRequest>
+				<ContactIdentifier>C-001172439-SN</ContactIdentifier> 
+			</ContactCloneToRegistrantRequest>
+		</ns1:ContactCloneToRegistrant>
+	</env:Body>
+</env:Envelope>"""
+
+    )
+    root = ET.fromstring(res.content)
+    # ET.dump(root)
+    node = root.find(".//ContactIdentifier")
+
+    return node.text
+
+
+
+def sendRequest(i,row,registrantID):
+
+    res = s.post(
+        API_ENDPOINT,
+        headers={
+            'content-type':'application/soap+xml'
+        },
+        data="""<?xml version="1.0" encoding="UTF-8"?>
+<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="http://soap-test.secureapi.com.au/API-2.0">
+	<env:Header>
+		<ns1:Authenticate> 
+			<AuthenticateRequest>
+				<ResellerID>23172</ResellerID>
+				<APIKey>e165aee9aa5765c36273ee5efb61c584</APIKey> 
+			</AuthenticateRequest>
+		</ns1:Authenticate> 
+	</env:Header> 
+	<env:Body>
+ 		<ns1:DomainCreate> 
+			<DomainCreateRequest>
+				<DomainName>"""+row[1]+"""</DomainName> 				
+				<RegistrantContactIdentifier>"""+registrantID+"""</RegistrantContactIdentifier> 
+				<AdminContactIdentifier>C-001172439-SN</AdminContactIdentifier> 
+				<BillingContactIdentifier>C-001172439-SN</BillingContactIdentifier> 
+				<TechContactIdentifier>C-001172439-SN</TechContactIdentifier>
+				<RegistrationPeriod>1</RegistrationPeriod>
+				<NameServers>
+					<item xsi:type="ns1:NameServer"> 
+						<Host>ns1.parkme.com.au</Host> 
+						<IP>203.170.87.1</IP>
+					</item>
+					<item xsi:type="ns1:NameServer">
+						<Host>ns2.parkme.com.au</Host>
+						<IP>203.170.87.2</IP> 
+					</item>
+				</NameServers>
+			</DomainCreateRequest>
+		</ns1:DomainCreate>
+	</env:Body> 
+</env:Envelope>"""
+
     )
     root = ET.fromstring(res.content)
     ET.dump(root)
-    node = root.find(".//{http://api.namecheap.com/xml.response}DomainCreateResult")
-    print(node.get("Registered"))
+    node = root.find(".//DomainDetails")
+    print(node!=None)
+    return 1
 
 
-sendRequest(0, "google.com")
+registrantID=getRegistrantID()
+t0 = time.time()
+
+for i in range(1):
+
+    x=sendRequest(i,["1id","sdfsdsdfs.com"],registrantID)
+
+print("Time needed for called: %.2fs"
+      % (time.time() - t0))
+
